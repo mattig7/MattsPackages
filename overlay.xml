@@ -3,7 +3,7 @@
 <repo priority="50" status="unofficial">
    <name>MattsPackages</name>
    <description> Matt's repository of packages</description>
-   <homepage>https://github.com/mattig7/MattsPackages.git</homepage>
+   <homepage>https://github.com/mattig7/MattsPackages/README</homepage>
    <owner>
       <email>matt_graham2001@hotmail.com</email>
       <name>Matt</name>
