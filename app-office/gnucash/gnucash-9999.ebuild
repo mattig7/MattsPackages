@@ -3,16 +3,15 @@
 # $Id$
 #edited by Matt, Oct 15
 EAPI="5"
-RESTRICT="mirror"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils gnome2 python-single-r1
+inherit git autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager (matt's ebuild for debugging and code testing)"
 HOMEPAGE="http://www.gnucash.org/"
-SRC_URI="https://github.com/mattig7/gnucash/tree/master/src"
+EGIT_REPO_URI="https://github.com/mattig7/gnucash/tree/master/src"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -56,6 +55,12 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool
 "
 PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
+
+src_unpack(){
+
+   git_src_unpack
+
+}
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
