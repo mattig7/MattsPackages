@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit git autotools eutils gnome2 python-single-r1
+inherit git-r3 autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager (matt's ebuild for debugging and code testing)"
 HOMEPAGE="http://www.gnucash.org/"
@@ -56,14 +56,14 @@ DEPEND="${RDEPEND}
 "
 PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
-src_unpack(){
-
-   git_src_unpack
-
-}
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+}
+
+src_unpack(){
+
+git-r3_fetch
+
 }
 
 src_prepare() {
