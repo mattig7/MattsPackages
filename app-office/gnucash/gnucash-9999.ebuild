@@ -11,11 +11,11 @@ inherit git-r3 autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager (matt's ebuild for debugging and code testing)"
 HOMEPAGE="http://www.gnucash.org/"
-EGIT_REPO_URI="https://github.com/mattig7/gnucash/tree/master/src"
+EGIT_REPO_URI="https://github.com/mattig7/gnucash.git"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="chipcard +debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
