@@ -13,8 +13,6 @@ DESCRIPTION="A personal finance manager (matt's ebuild for debugging and code te
 HOMEPAGE="http://www.gnucash.org/"
 EGIT_REPO_URI="https://github.com/Gnucash/gnucash.git"
 EGIT_COMMIT="2.6.8"
-RESTRICT="nomirror"
-
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
