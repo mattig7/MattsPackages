@@ -12,6 +12,7 @@ inherit git-r3 autotools eutils gnome2 python-single-r1
 DESCRIPTION="A personal finance manager (matt's ebuild for debugging and code testing)"
 HOMEPAGE="http://www.gnucash.org/"
 EGIT_REPO_URI="https://github.com/mattig7/gnucash.git"
+SRC_URI=""
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -60,9 +61,8 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_unpack(){
-
-git-r3_fetch
+src_unpack() {
+	git-r3_src_unpack
 
 }
 
