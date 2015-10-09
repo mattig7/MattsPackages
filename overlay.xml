@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <repositories version="1.0">
-<repo priority="50" status="unofficial" auto-sync="yes">
+<repo priority="50" status="unofficial">
    <name>MattsPackages</name>
    <description> Matt's repository of packages</description>
    <homepage>https://github.com/mattig7/MattsPackages/README</homepage>
