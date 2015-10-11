@@ -76,6 +76,8 @@ src_prepare() {
 }
 
 src_configure() {
+	./autogen.sh
+
 	local myconf
 
 	DOCS="doc/README.OFX doc/README.HBCI"
