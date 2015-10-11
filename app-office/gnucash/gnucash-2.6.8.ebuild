@@ -117,6 +117,10 @@ src_test() {
 	emake check
 }
 
+src_compile() {
+	gnome2_pkg_compile
+}
+
 src_install() {
 	# Parallel installation fails from time to time, bug #359123
 	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_install GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
