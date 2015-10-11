@@ -118,7 +118,7 @@ src_test() {
 }
 
 src_compile() {
-	gnome2_pkg_compile
+	gnome2_src_compile
 }
 
 src_install() {
