@@ -1,24 +1,21 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-#edited by Matt, Oct 15
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit git-r3 autotools eutils gnome2 python-single-r1
+inherit autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager"
 HOMEPAGE="http://www.gnucash.org/"
-EGIT_REPO_URI="https://github.com/Gnucash/gnucash.git"
-EGIT_COMMIT="2.6.9"
-SRC_URI=""
+SRC_URI="https://github.com/Gnucash/gnucash/archive/2.6.9.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
+IUSE="chipcard debug -doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
 # libdbi version requirement for sqlite taken from bug #455134
@@ -62,10 +59,6 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_unpack() {
-	git-r3_src_unpack
-
-}
 
 src_prepare() {
 	# Skip test that needs some locales to be present
@@ -76,7 +69,6 @@ src_prepare() {
 }
 
 src_configure() {
-	./autogen.sh
 
 	local myconf
 

@@ -9,15 +9,16 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit git-r3 autotools eutils gnome2 python-single-r1
 
-DESCRIPTION="A personal finance manager (matt's ebuild for debugging and code testing)"
+DESCRIPTION="A personal finance manager. MATTS GIT COMPILED SOURCE FOR TESTING."
 HOMEPAGE="http://www.gnucash.org/"
-EGIT_REPO_URI="https://github.com/mattig7/gnucash.git"
+EGIT_REPO_URI="https://github.com/Gnucash/gnucash.git"
+EGIT_COMMIT="maint"
 SRC_URI=""
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="chipcard +debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
+IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
 # libdbi version requirement for sqlite taken from bug #455134
@@ -75,6 +76,8 @@ src_prepare() {
 }
 
 src_configure() {
+	./autogen.sh
+
 	local myconf
 
 	DOCS="doc/README.OFX doc/README.HBCI"
@@ -114,6 +117,10 @@ src_test() {
 	GUILE_WARN_DEPRECATED=no \
 	GNC_DOT_DIR="${T}"/.gnucash \
 	emake check
+}
+
+src_compile() {
+	gnome2_src_compile
 }
 
 src_install() {
