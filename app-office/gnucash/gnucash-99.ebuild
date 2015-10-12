@@ -64,6 +64,7 @@ PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+	git-r3_checkout
 }
 
 src_unpack() {
