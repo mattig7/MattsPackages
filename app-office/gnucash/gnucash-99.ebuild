@@ -43,10 +43,9 @@ RDEPEND="
 	>=x11-libs/goffice-0.7.0:0.8[gnome]
 	>=dev-libs/libxml2-2.5.10:2
 	dev-libs/libxslt
-	>=dev-lib/boost-1.50.0
+	>=dev-libs/boost-1.50.0
 	>=dev-lang/swig-2.0.10
 	>=net-libs/webkit-gtk-1.2:2
-
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	ofx? ( >=dev-libs/libofx-0.9.1 )
 	hbci? ( >=net-libs/aqbanking-5[gtk,ofx?]
