@@ -1,6 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
@@ -10,12 +11,12 @@ inherit autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager"
 HOMEPAGE="http://www.gnucash.org/"
-SRC_URI="https://github.com/Gnucash/gnucash/archive/2.6.9.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="chipcard debug -doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
+IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
 # libdbi version requirement for sqlite taken from bug #455134
@@ -59,7 +60,6 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-
 src_prepare() {
 	# Skip test that needs some locales to be present
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
@@ -69,7 +69,6 @@ src_prepare() {
 }
 
 src_configure() {
-
 	local myconf
 
 	DOCS="doc/README.OFX doc/README.HBCI"
@@ -109,10 +108,6 @@ src_test() {
 	GUILE_WARN_DEPRECATED=no \
 	GNC_DOT_DIR="${T}"/.gnucash \
 	emake check
-}
-
-src_compile() {
-	gnome2_src_compile
 }
 
 src_install() {
