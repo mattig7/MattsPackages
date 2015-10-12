@@ -22,19 +22,30 @@ IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sq
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
 # libdbi version requirement for sqlite taken from bug #455134
+
+#Removed deps:
+#	dev-scheme/guile-www
+#	>=dev-libs/popt-1.5
+#	>=sys-libs/zlib-1.1.4
+#	x11-libs/pango
+
+
+#swig can be removed if the origin of the source is not git.
+
+
+
 RDEPEND="
 	>=dev-libs/glib-2.32.0:2
-	>=dev-libs/popt-1.5
+	>=x11-libs/gtk+-2.24:2
+	>=dev-scheme/guile-1.8.3:12[deprecated,regex]
+	gnome-base/libgnomecanvas
+	>=x11-libs/goffice-0.7.0:0.8[gnome]
 	>=dev-libs/libxml2-2.5.10:2
 	dev-libs/libxslt
-	>=dev-scheme/guile-1.8.3:12[deprecated,regex]
-	dev-scheme/guile-www
-	gnome-base/libgnomecanvas
+	>=dev-lib/boost-1.50.0
+	>=dev-lang/swig-2.0.10
 	>=net-libs/webkit-gtk-1.2:2
-	>=sys-libs/zlib-1.1.4
-	>=x11-libs/gtk+-2.24:2
-	>=x11-libs/goffice-0.7.0:0.8[gnome]
-	x11-libs/pango
+
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	ofx? ( >=dev-libs/libofx-0.9.1 )
 	hbci? ( >=net-libs/aqbanking-5[gtk,ofx?]
@@ -50,12 +61,14 @@ RDEPEND="
 	postgres? ( dev-db/libdbi dev-db/libdbi-drivers[postgres] )
 	mysql? ( dev-db/libdbi dev-db/libdbi-drivers[mysql] )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	dev-util/intltool
-	gnome-base/gnome-common
-	sys-devel/libtool
-"
+
+# Removed from DEPEND
+#	virtual/pkgconfig
+#	dev-util/intltool
+#	gnome-base/gnome-common
+#	sys-devel/libtool
+
+DEPEND="${RDEPEND}"
 PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
 pkg_setup() {
