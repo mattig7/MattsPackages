@@ -11,8 +11,7 @@ inherit git-r3 autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager. MATTS GIT COMPILED SOURCE FOR TESTING."
 HOMEPAGE="http://www.gnucash.org/"
-EGIT_REPO_URI="https://github.com/Gnucash/gnucash.git"
-#EGIT_COMMIT="2.6.9"
+EGIT_REPO_URI="https://github.com/mattig7/gnucash.git"
 EGIT_BRANCH="maint"
 SRC_URI=""
 
@@ -23,18 +22,12 @@ IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sq
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
 # libdbi version requirement for sqlite taken from bug #455134
-
 #Removed deps:
 #	dev-scheme/guile-www
 #	>=dev-libs/popt-1.5
 #	>=sys-libs/zlib-1.1.4
 #	x11-libs/pango
-
-
 #swig can be removed if the origin of the source is not git.
-
-
-
 RDEPEND="
 	>=dev-libs/glib-2.32.0:2
 	>=x11-libs/gtk+-2.24:2
@@ -61,13 +54,11 @@ RDEPEND="
 	postgres? ( dev-db/libdbi dev-db/libdbi-drivers[postgres] )
 	mysql? ( dev-db/libdbi dev-db/libdbi-drivers[mysql] )
 "
-
 # Removed from DEPEND
 #	virtual/pkgconfig
 #	dev-util/intltool
 #	gnome-base/gnome-common
 #	sys-devel/libtool
-
 DEPEND="${RDEPEND}"
 PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
@@ -77,7 +68,6 @@ pkg_setup() {
 
 src_unpack() {
 	git-r3_src_unpack
-
 }
 
 src_prepare() {
