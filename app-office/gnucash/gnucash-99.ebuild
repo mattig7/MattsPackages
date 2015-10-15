@@ -12,7 +12,9 @@ inherit git-r3 autotools eutils gnome2 python-single-r1
 DESCRIPTION="A personal finance manager. MATTS GIT COMPILED SOURCE FOR TESTING."
 HOMEPAGE="http://www.gnucash.org/"
 EGIT_REPO_URI="https://github.com/mattig7/gnucash.git"
-EGIT_BRANCH="maint"
+#EGIT_BRANCH="maint"
+EGIT_BRANCH="Bug742352"
+
 SRC_URI=""
 
 SLOT="0"
