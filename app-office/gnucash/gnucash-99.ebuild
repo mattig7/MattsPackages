@@ -24,12 +24,7 @@ IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sq
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
 # libdbi version requirement for sqlite taken from bug #455134
-#Removed deps:
-#	dev-scheme/guile-www
-#	>=dev-libs/popt-1.5
-#	>=sys-libs/zlib-1.1.4
-#	x11-libs/pango
-#swig can be removed if the origin of the source is not git.
+#dependancy on dev-lang/swig can be removed if the origin of the source is not git.
 RDEPEND="
 	>=dev-libs/glib-2.32.0:2
 	>=x11-libs/gtk+-2.24:2
@@ -41,6 +36,10 @@ RDEPEND="
 	>=dev-libs/boost-1.50.0
 	>=dev-lang/swig-2.0.10
 	>=net-libs/webkit-gtk-1.2:2
+	dev-scheme/guile-www
+	>=dev-libs/popt-1.5
+	>=sys-libs/zlib-1.1.4
+	x11-libs/pango
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	ofx? ( >=dev-libs/libofx-0.9.1 )
 	hbci? ( >=net-libs/aqbanking-5[gtk,ofx?]
