@@ -8,8 +8,6 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 eutils versionator
 
-RESTRICT="mirror"
-
 MY_PN="TaskCoach"
 MY_P="${MY_PN}-${PV}"
 
