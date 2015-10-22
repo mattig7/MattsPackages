@@ -13,11 +13,10 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Simple personal tasks and todo lists manager"
 HOMEPAGE="http://www.taskcoach.org https://pypi.python.org/pypi/TaskCoach"
-#SRC_URI="mirror://sourceforge/projects/${PN}/files/${PN}/Release-${PV}/${MY_P}.tar.gz/download"
-SRC_URI="http://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="libnotify"
 DEPEND=">=dev-python/wxpython-2.8.9.2:2.8[${PYTHON_USEDEP}]
 	>=dev-python/twisted-core-10.0"
