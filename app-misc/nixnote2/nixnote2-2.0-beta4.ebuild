@@ -8,7 +8,10 @@ DESCRIPTION="Nixnote - A clone of Evernote for Linux"
 HOMEPAGE="http://sourceforge.net/projects/nevernote/"
 #SRC_URI="https://github.com/baumgarr/Nixnote2/archive/v2.0-beta4.tar.gz -> Nixnote2-2.0-beta4.tar.gz"
 
-SRC_URI="http://sourceforge.net/projects/nevernote/files/NixNote2%20-%20Beta%204/nixnote2-2.0-beta4_amd64.tar.gz/download"
+# This is the exact source directory...
+#SRC_URI="http://sourceforge.net/projects/nevernote/files/NixNote2%20-%20Beta%204/nixnote2-2.0-beta4_amd64.tar.gz/download"
+
+SRC_URI="mirror://sourceforge/nevernote/${P}_amd64.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
