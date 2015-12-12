@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit git-r3 autotools eutils gnome2 python-single-r1
+inherit git-r3 cmake-utils autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager."
 HOMEPAGE="http://www.gnucash.org/"
@@ -24,6 +24,7 @@ IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sq
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
 # libdbi version requirement for sqlite taken from bug #455134
 #dependancy on dev-lang/swig can be removed if the origin of the source is not git.
+# FIXME: Insert dependency on cmake to ensure that this works for everyone.
 RDEPEND="
 	>=dev-libs/glib-2.32.0:2
 	>=x11-libs/gtk+-2.24:2
@@ -77,7 +78,9 @@ src_prepare() {
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
 
 	eautoreconf
-	gnome2_src_prepare
+#	gnome2_src_prepare
+	cmake-utils_src_prepare
+
 }
 
 src_configure() {
@@ -104,7 +107,21 @@ src_configure() {
 	done
 
 	# gtkmm is experimental and shouldn't be enabled, upstream bug #684166
+	/*
+	IF THE COMMENT FAILS THEN THIS LINE WILL SHOW AN ERROR. YAY
 	gnome2_src_configure \
+		$(use_enable debug) \
+		$(use_enable gnome-keyring password-storage) \
+		$(use_enable ofx) \
+		$(use_enable hbci aqbanking) \
+		$(use_enable python) \
+		--disable-doxygen \
+		--disable-gtkmm \
+		--enable-locale-specific-tax \
+		--disable-error-on-warning \
+		 GUILE_LIBS="${GUILE_LIBS}" ${myconf}
+	*/
+	cmake-utils_src_configure \
 		$(use_enable debug) \
 		$(use_enable gnome-keyring password-storage) \
 		$(use_enable ofx) \
@@ -124,13 +141,9 @@ src_test() {
 	emake check
 }
 
-src_compile() {
-	gnome2_src_compile
-}
-
 src_install() {
 	# Parallel installation fails from time to time, bug #359123
-	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_install GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
+	MAKEOPTS="${MAKEOPTS} -j1" cmake-utils_src_install GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
 
 	rm -rf "${ED}"/usr/share/doc/${PF}/{examples/,COPYING,INSTALL,*win32-bin.txt,projects.html}
 	mv "${ED}"/usr/share/doc/${PF} "${T}"/cantuseprepalldocs || die
