@@ -12,7 +12,7 @@ inherit git-r3 cmake-utils eutils gnome2 python-single-r1
 DESCRIPTION="A personal finance manager."
 HOMEPAGE="http://www.gnucash.org/"
 EGIT_REPO_URI="https://github.com/mattig7/gnucash.git"
-EGIT_BRANCH="master"
+EGIT_BRANCH="maint"
 
 SRC_URI=""
 
