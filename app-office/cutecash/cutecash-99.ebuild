@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit git-r3 cmake-utils autotools eutils gnome2 python-single-r1
+inherit git-r3 cmake-utils eutils gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager."
 HOMEPAGE="http://www.gnucash.org/"
@@ -77,7 +77,7 @@ src_prepare() {
 	# Skip test that needs some locales to be present
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
 
-	eautoreconf
+
 #	gnome2_src_prepare
 	cmake-utils_src_prepare
 
