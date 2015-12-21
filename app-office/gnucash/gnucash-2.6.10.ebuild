@@ -14,7 +14,7 @@ HOMEPAGE="http://www.gnucash.org/"
 EGIT_REPO_URI="https://github.com/Gnucash/gnucash.git"
 
 EGIT_CLONE_TYPE="single"
-EGIT_COMMIT="2.6.10"
+EGIT_COMMIT=${PV}
 
 SRC_URI=""
 
@@ -65,13 +65,9 @@ DEPEND="${RDEPEND}"
 PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
 pkg_setup() {
+
 	git-r3_fetch
 	use python && python-single-r1_pkg_setup
-}
-
-src_unpack() {
-	git-r3_checkout
-
 }
 
 src_prepare() {
