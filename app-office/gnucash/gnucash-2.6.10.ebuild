@@ -68,6 +68,7 @@ pkg_setup() {
 
 	git-r3_fetch
 	git-r3_checkout
+	chown -R portage:portage $WORKDIR
 
 	use python && python-single-r1_pkg_setup
 }
