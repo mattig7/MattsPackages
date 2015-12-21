@@ -12,8 +12,7 @@ inherit git-r3 autotools eutils gnome2 python-single-r1
 DESCRIPTION="A personal finance manager."
 HOMEPAGE="http://www.gnucash.org/"
 EGIT_REPO_URI="https://github.com/gnucash/gnucash.git"
-#EGIT_BRANCH="maint"
-#EGIT_BRANCH="Bug742352"
+
 EGIT_CLONE_TYPE="single"
 EGIT_COMMIT="2.6.10"
 
@@ -78,6 +77,12 @@ src_prepare() {
 
 	eautoreconf
 	gnome2_src_prepare
+}
+
+src_unpack() {
+
+	gnome2_src_unpack
+
 }
 
 src_configure() {
