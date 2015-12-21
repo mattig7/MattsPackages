@@ -72,10 +72,6 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_unpack() {
-	git-r3_src_unpack
-}
-
 src_prepare() {
 	# Skip test that needs some locales to be present
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
