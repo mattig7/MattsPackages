@@ -13,7 +13,7 @@ DESCRIPTION="A personal finance manager."
 HOMEPAGE="http://www.gnucash.org/"
 EGIT_REPO_URI="https://github.com/gnucash/gnucash.git"
 
-EGIT_CLONE_TYPE="single"
+EGIT_CLONE_TYPE="single+tags"
 EGIT_COMMIT="2.6.10"
 
 
