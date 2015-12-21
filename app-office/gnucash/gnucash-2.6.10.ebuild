@@ -11,11 +11,10 @@ inherit git-r3 autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager."
 HOMEPAGE="http://www.gnucash.org/"
-EGIT_REPO_URI="https://github.com/gnucash/gnucash.git"
+EGIT_REPO_URI="https://github.com/Gnucash/gnucash.git"
 
 EGIT_CLONE_TYPE="single"
 EGIT_COMMIT="2.6.10"
-
 
 SRC_URI=""
 
@@ -70,16 +69,17 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_unpack() {
+	git-r3_checkout
+
+}
+
 src_prepare() {
 	# Skip test that needs some locales to be present
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
 
 	eautoreconf
 	gnome2_src_prepare
-}
-
-src_unpack() {
-	#Dont unpack anything - we are using git so the fetch process does it for us
 }
 
 src_configure() {
