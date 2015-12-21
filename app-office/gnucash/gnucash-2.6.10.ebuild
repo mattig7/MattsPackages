@@ -68,16 +68,11 @@ pkg_setup() {
 
 	git-r3_fetch
 	git-r3_checkout
-	chown -R portage:portage $WORKDIR
+
 
 	use python && python-single-r1_pkg_setup
 }
 
-src_unpack() {
-	
-	git-r3_checkout
-
-}
 
 src_prepare() {
 	# Skip test that needs some locales to be present
