@@ -13,7 +13,7 @@ DESCRIPTION="A personal finance manager."
 HOMEPAGE="http://www.gnucash.org/"
 EGIT_REPO_URI="https://github.com/gnucash/gnucash.git"
 
-EGIT_CLONE_TYPE="single+tags"
+EGIT_CLONE_TYPE="single"
 EGIT_COMMIT="2.6.10"
 
 
@@ -67,7 +67,6 @@ PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
 pkg_setup() {
 	git-r3_fetch
-
 	use python && python-single-r1_pkg_setup
 }
 
