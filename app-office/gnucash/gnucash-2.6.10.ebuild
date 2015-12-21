@@ -78,10 +78,9 @@ src_prepare() {
 	gnome2_src_prepare
 }
 
-src_unpack() {
-
-	gnome2_src_unpack
-
+src_unpack()
+{
+	#Dont unpack anything - we are using git so the fetch process does it for us
 }
 
 src_configure() {
