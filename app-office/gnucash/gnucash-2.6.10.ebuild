@@ -66,13 +66,14 @@ PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
 pkg_setup() {
 
-	git-r3_fetch
-	git-r3_checkout
-
-
 	use python && python-single-r1_pkg_setup
 }
 
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout
+
+}
 
 src_prepare() {
 	# Skip test that needs some locales to be present
