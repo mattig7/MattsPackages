@@ -9,11 +9,13 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit git-r3 autotools eutils gnome2 python-single-r1
 
-DESCRIPTION="A personal finance manager. MATTS GIT COMPILED SOURCE FOR TESTING."
+DESCRIPTION="A personal finance manager. MATTS DEBUG TESTING EBUILD"
 HOMEPAGE="http://www.gnucash.org/"
 EGIT_REPO_URI="https://github.com/mattig7/gnucash.git"
-#EGIT_BRANCH="maint"
-EGIT_BRANCH="Bug742352"
+
+EGIT_CLONE_TYPE="single"
+#EGIT_COMMIT=${PV}
+EGIT_BRANCH="maint"
 
 SRC_URI=""
 
@@ -64,13 +66,14 @@ DEPEND="${RDEPEND}"
 PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
 pkg_setup() {
-	git-r3_fetch
 
 	use python && python-single-r1_pkg_setup
 }
 
 src_unpack() {
-	git-r3_src_unpack
+	git-r3_fetch
+	git-r3_checkout
+
 }
 
 src_prepare() {
