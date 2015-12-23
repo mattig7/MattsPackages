@@ -70,7 +70,7 @@ pkg_setup() {
 
 src_unpack() {
 	git-r3_fetch
-	fit-r3_checkout
+	git-r3_checkout
 }
 
 src_prepare() {
