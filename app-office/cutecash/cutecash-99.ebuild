@@ -91,12 +91,6 @@ src_configure() {
 
 	DOCS="doc/README.OFX doc/README.HBCI"
 
-	if use sqlite || use mysql || use postgres ; then
-		myconf+=" --enable-dbi"
-	else
-		myconf+=" --disable-dbi"
-	fi
-
 	# guile wrongly exports LDFLAGS as LIBS which breaks modules
 	# Filter until a better ebuild is available, bug #202205
 	local GUILE_LIBS=""
@@ -108,22 +102,28 @@ src_configure() {
 	done
 
 	# gtkmm is experimental and shouldn't be enabled, upstream bug #684166
-
-#		--disable-doxygen
-#		--disable-gtkmm
-#		--enable-locale-specific-tax
-#		--disable-error-on-warning
 #		 GUILE_LIBS="${GUILE_LIBS}" ${myconf}
+#	if use sqlite || use mysql || use postgres ; then
+#			$(cmake-utils_use --enable-dbi"
+#		else
+#			myconf+=" --disable-dbi"
+#		fi
+
 
 	local mycmakeargs=(
-		$(cmake-utils_use debug debug)
-		$(cmake-utils_use gnome-keyring password-storage)
-		$(cmake-utils_use ofx ofx)
-		$(cmake-utils_use hbci aqbanking)
-		$(cmake-utils_use python python)
+		$(cmake-utils_use debug enable-debug)
+		$(cmake-utils_use gnome-keyring enable-password-storage)
+		$(cmake-utils_use ofx enable-ofx)
+		$(cmake-utils_use hbci enable-aqbanking)
+		$(cmake-utils_use python enable python)
+		--disable-doxygen
+		--disable-gtkmm
+		--enable-locale-specific-tax
+		--disable-error-on-warning
+		--enable-dbi
 	)
 
-	cmake-utils_src_configure \
+	cmake-utils_src_configure
 }
 
 src_compile() {
@@ -141,7 +141,11 @@ src_test() {
 
 src_install() {
 	# Parallel installation fails from time to time, bug #359123
-	MAKEOPTS="${MAKEOPTS} -j1" cmake-utils_src_install GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
+	MAKEOPTS="${MAKEOPTS} -j1" 
+	
+	cmake-utils_src_install 
+	
+	GNC_DOC_INSTALL_DIR=/usr/share/doc/${PF}
 
 	rm -rf "${ED}"/usr/share/doc/${PF}/{examples/,COPYING,INSTALL,*win32-bin.txt,projects.html}
 	mv "${ED}"/usr/share/doc/${PF} "${T}"/cantuseprepalldocs || die
