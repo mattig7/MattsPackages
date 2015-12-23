@@ -109,17 +109,21 @@ src_configure() {
 
 	# gtkmm is experimental and shouldn't be enabled, upstream bug #684166
 
+#		--disable-doxygen
+#		--disable-gtkmm
+#		--enable-locale-specific-tax
+#		--disable-error-on-warning
+#		 GUILE_LIBS="${GUILE_LIBS}" ${myconf}
+
+	local mycmakeargs=(
+		$(cmake-utils_use debug debug)
+		$(cmake-utils_use gnome-keyring password-storage)
+		$(cmake-utils_use ofx ofx)
+		$(cmake-utils_use hbci aqbanking)
+		$(cmake-utils_use python python)
+	)
+
 	cmake-utils_src_configure \
-		$(use_enable debug) \
-		$(use_enable gnome-keyring password-storage) \
-		$(use_enable ofx) \
-		$(use_enable hbci aqbanking) \
-		$(use_enable python) \
-		--disable-doxygen \
-		--disable-gtkmm \
-		--enable-locale-specific-tax \
-		--disable-error-on-warning \
-		 GUILE_LIBS="${GUILE_LIBS}" ${myconf}
 }
 
 src_compile() {
