@@ -107,20 +107,7 @@ src_configure() {
 	done
 
 	# gtkmm is experimental and shouldn't be enabled, upstream bug #684166
-	/*
-	IF THE COMMENT FAILS THEN THIS LINE WILL SHOW AN ERROR. YAY
-	gnome2_src_configure \
-		$(use_enable debug) \
-		$(use_enable gnome-keyring password-storage) \
-		$(use_enable ofx) \
-		$(use_enable hbci aqbanking) \
-		$(use_enable python) \
-		--disable-doxygen \
-		--disable-gtkmm \
-		--enable-locale-specific-tax \
-		--disable-error-on-warning \
-		 GUILE_LIBS="${GUILE_LIBS}" ${myconf}
-	*/
+
 	cmake-utils_src_configure \
 		$(use_enable debug) \
 		$(use_enable gnome-keyring password-storage) \
