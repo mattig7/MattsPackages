@@ -16,6 +16,9 @@ EGIT_BRANCH="master"
 
 SRC_URI=""
 
+CMAKE_VERBOSE="ON"
+
+
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
@@ -40,6 +43,7 @@ RDEPEND="
 	>=dev-libs/popt-1.5
 	>=sys-libs/zlib-1.1.4
 	x11-libs/pango
+	>=dev-util/cmake-2.6.0
 	gnome-keyring? ( >=app-crypt/libsecret-0.18 )
 	ofx? ( >=dev-libs/libofx-0.9.1 )
 	hbci? ( >=net-libs/aqbanking-5[gtk,ofx?]
@@ -77,14 +81,11 @@ src_prepare() {
 	# Skip test that needs some locales to be present
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
 
-
-#	gnome2_src_prepare
 	cmake-utils_src_prepare
 
 }
 
 src_configure() {
-	./autogen.sh
 
 	local myconf
 
@@ -121,11 +122,17 @@ src_configure() {
 		 GUILE_LIBS="${GUILE_LIBS}" ${myconf}
 }
 
+src_compile() {
+
+	cmake-utils_src_compile
+
+}
+
 src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS
 	GUILE_WARN_DEPRECATED=no \
 	GNC_DOT_DIR="${T}"/.gnucash \
-	emake check
+	cmake-utils_src_test
 }
 
 src_install() {
