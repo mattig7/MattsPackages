@@ -113,8 +113,8 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use debug enable-debug)
 		$(cmake-utils_use gnome-keyring enable-password-storage)
-		$(cmake-utils_use ofx enable-ofx)
-		$(cmake-utils_use hbci enable-aqbanking)
+		$(cmake-utils_use ofx WITH_OFX)
+		$(cmake-utils_use hbci WITH_AQBANKING)
 		$(cmake-utils_use python enable python)
 		--disable-doxygen
 		--disable-gtkmm
