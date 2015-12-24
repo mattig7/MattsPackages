@@ -116,11 +116,11 @@ src_configure() {
 		$(cmake-utils_use ofx enable-ofx)
 		$(cmake-utils_use hbci enable-aqbanking)
 		$(cmake-utils_use python enable python)
-		$(cmake-utils_use_with disable-doxygen)
-		$(cmake-utils_use_with disable-gtkmm)
-		$(cmake-utils_use_with enable-locale-specific-tax)
-		$(cmake-utils_use_with disable-error-on-warning)
-		$(cmake-utils_use_with enable-dbi)
+		--disable-doxygen
+		--disable-gtkmm
+		--enable-locale-specific-tax
+		--disable-error-on-warning
+		--disable-dbi
 	)
 
 	cmake-utils_src_configure
