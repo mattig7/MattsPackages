@@ -87,40 +87,20 @@ src_prepare() {
 
 src_configure() {
 
-	local myconf
-
-	DOCS="doc/README.OFX doc/README.HBCI"
-
-	# guile wrongly exports LDFLAGS as LIBS which breaks modules
-	# Filter until a better ebuild is available, bug #202205
-	local GUILE_LIBS=""
-	local lib
-	for lib in $(guile-config link); do
-		if [ "${lib#-Wl}" = "$lib" ]; then
-			GUILE_LIBS="$GUILE_LIBS $lib"
-		fi
-	done
-
-	# gtkmm is experimental and shouldn't be enabled, upstream bug #684166
-#		 GUILE_LIBS="${GUILE_LIBS}" ${myconf}
-#	if use sqlite || use mysql || use postgres ; then
-#			$(cmake-utils_use --enable-dbi"
-#		else
-#			myconf+=" --disable-dbi"
-#		fi
-
-
+# See CMakeLists.text in the root directly of the sources for the options used
+# Gnome keyring and python weren't present in the CMakeLists file so I don't think they will work.
 	local mycmakeargs=(
-		$(cmake-utils_use debug enable-debug)
-		$(cmake-utils_use gnome-keyring enable-password-storage)
-		$(cmake-utils_use ofx WITH_OFX)
+		$(cmake-utils_use mysql WITH_SQL)
 		$(cmake-utils_use hbci WITH_AQBANKING)
+		-D WITH_GNUCASH=ON
+		-D WITH_CUTECASH=ON
+		$(cmake-utils_use ofx WITH_OFX)
+		-D WITH_BINRELOC=ON
+		$(cmake-utils_use debug ENABLE_DEBUG)
+		-D ENABLE_REGISTER2=OFF
+		$(cmake-utils_use gnome-keyring enable-password-storage)
 		$(cmake-utils_use python enable python)
-		--disable-doxygen
-		--disable-gtkmm
-		--enable-locale-specific-tax
-		--disable-error-on-warning
-		--disable-dbi
+		
 	)
 
 	cmake-utils_src_configure
