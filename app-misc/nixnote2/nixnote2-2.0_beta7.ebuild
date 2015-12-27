@@ -53,6 +53,9 @@ RDEPEND="${DEPEND}
 		app-text/htmltidy"
 
 src_prepare() {
+	# fix issue with incorrect packages name
+	mv ${S}/nixnote2 ${S}/${P}
+
 	# fix VideoCapture undefined reference error with opencv-3
 	if use opencv3; then
 		sed -i 's/LIBS += /LIBS +=  -lopencv_videoio/g' NixNote2.pro
