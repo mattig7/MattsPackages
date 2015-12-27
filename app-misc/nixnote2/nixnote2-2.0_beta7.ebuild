@@ -56,7 +56,7 @@ src_unpack() {
 	unpack ${A}
 	
 	# fix issue with incorrect work directory name
-	mv ${S}/nixnote2 ${S}/${P}
+	mv ${WORKDIR}/nixnote2 ${WORKDIR}/${P}
 
 }
 
