@@ -51,10 +51,16 @@ DEPEND="dev-libs/boost
 	      "
 RDEPEND="${DEPEND}
 		app-text/htmltidy"
+src_unpack() {
+
+	unpack ${A}
+	
+	# fix issue with incorrect work directory name
+	mv ${S}/nixnote2 ${S}/${P}
+
+}
 
 src_prepare() {
-	# fix issue with incorrect packages name
-	mv ${S}/nixnote2 ${S}/${P}
 
 	# fix VideoCapture undefined reference error with opencv-3
 	if use opencv3; then
