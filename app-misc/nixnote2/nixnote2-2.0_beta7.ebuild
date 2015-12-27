@@ -13,12 +13,12 @@ if [[ "${PV}" == "9999" ]] ; then
 	SLOT="0/9999"
 else
 	MY_PV="$(replace_version_separator 2 '-')"
-	SRC_URI="mirror://sourceforge/nevernote/${PN}-${MY_PV}_amd64.tar.gz"
+	SRC_URI="https://github.com/baumgarr/${PN}/archive/v${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
 	SLOT="0/2"   
-#	S="${WORKDIR}/${PN}-${MY_PV}"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
-DESCRIPTION="Nixnote2 - A clone of Evernote for Linux"
+DESCRIPTION="Nixnote - A clone of Evernote for Linux"
 HOMEPAGE="http://sourceforge.net/projects/nevernote/"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
@@ -51,17 +51,8 @@ DEPEND="dev-libs/boost
 	      "
 RDEPEND="${DEPEND}
 		app-text/htmltidy"
-src_unpack() {
-
-	unpack ${A}
-	
-	# fix issue with incorrect work directory name
-	mv ${WORKDIR}/nixnote2 ${WORKDIR}/${P}
-
-}
 
 src_prepare() {
-
 	# fix VideoCapture undefined reference error with opencv-3
 	if use opencv3; then
 		sed -i 's/LIBS += /LIBS +=  -lopencv_videoio/g' NixNote2.pro
