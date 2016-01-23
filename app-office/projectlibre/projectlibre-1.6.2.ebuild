@@ -26,16 +26,19 @@ IUSE=""
 RDEPEND=">=virtual/jre-1.5"
 DEPEND=">=virtual/jdk-1.5"
 
-S=${WORKDIR}/${MY_P}
+#S=${WORKDIR}/${MY_P}
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
 
 java_prepare() {
 
+	ls
+
 	# Clean up all jar and class files
 	java-pkg_clean
 
+	ls
 }
 
 
