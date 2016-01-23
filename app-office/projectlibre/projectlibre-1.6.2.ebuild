@@ -16,7 +16,11 @@ inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Free open source desktop alternative to Microsoft Project"
 HOMEPAGE="http://www.projectlibre.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
+
+#NOT SURE THAT THIS IS GETTING THE CORRECT PACKAGES!!!
+
+SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.tar.gz"
 
 LICENSE="CPAL-1.0"
 SLOT="0"
