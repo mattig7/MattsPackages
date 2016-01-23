@@ -11,8 +11,8 @@ JAVA_PKG_IUSE="doc source"
 
 inherit eutils java-pkg-2 java-ant-2
 
-#MY_PN=${PN/-bin}
-#MY_P="${MY_PN}-${PV}"
+MY_PN=${PN/-src}
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Free open source desktop alternative to Microsoft Project"
 HOMEPAGE="http://www.projectlibre.org/"
@@ -20,7 +20,7 @@ HOMEPAGE="http://www.projectlibre.org/"
 
 #NOT SURE THAT THIS IS GETTING THE CORRECT PACKAGES!!!
 
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="CPAL-1.0"
 SLOT="0"
@@ -30,18 +30,20 @@ IUSE=""
 RDEPEND=">=virtual/jre-1.5"
 DEPEND=">=virtual/jdk-1.5"
 
-#S=${WORKDIR}/${MY_P}
+S=${WORKDIR}/${MY_P}
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
 
 java_prepare() {
 
+	echo "File list before clean:"
 	ls
 
 	# Clean up all jar and class files
 	java-pkg_clean
 
+	echo "File list after clean:"
 	ls
 }
 
