@@ -20,7 +20,7 @@ HOMEPAGE="http://www.projectlibre.org/"
 
 #NOT SURE THAT THIS IS GETTING THE CORRECT PACKAGES!!!
 
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="CPAL-1.0"
 SLOT="0"
