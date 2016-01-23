@@ -25,8 +25,10 @@ S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
-# Not sure what this is trying to do. Everything should already be unpacked properly.
-#	cp "${FILESDIR}"/${MY_PN}.{desktop,png} ./ || die
+
+#	I cut out the .desktop file here...
+	cp "${FILESDIR}"/${MY_PN}-application.png ./ || die
+	
 	cd "${S}"
 	rm -rf license openproj.bat readme.html
 }
