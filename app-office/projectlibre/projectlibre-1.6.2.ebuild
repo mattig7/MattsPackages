@@ -11,7 +11,7 @@ JAVA_PKG_IUSE="doc source"
 
 inherit eutils java-pkg-2 java-ant-2
 
-MY_PN=${PN/-src}
+MY_PN="${PN}-src"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Free open source desktop alternative to Microsoft Project"
