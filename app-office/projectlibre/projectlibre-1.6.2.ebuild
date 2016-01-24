@@ -36,15 +36,17 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 
 
 java_prepare() {
-	echo `The MY_PN variable is ${MY_PN}`
+	echo "The MY_PN variable is:"
+	echo `${MY_PN}`
+	
 	echo "File list before clean:"
-	ls
+	ls -al
 
 	# Clean up all jar and class files
 	java-pkg_clean
 
 	echo "File list after clean:"
-	ls
+	ls -al
 }
 
 
