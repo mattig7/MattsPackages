@@ -37,7 +37,7 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 
 java_prepare() {
 	echo "The MY_PN variable is:"
-	echo `${MY_PN}`
+	echo ${MY_PN}
 	
 	echo "File list before clean:"
 	ls -al
