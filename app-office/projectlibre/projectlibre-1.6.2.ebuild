@@ -3,7 +3,6 @@
 # $Header: /var/cvsroot/gentoo-x86/app-office/openproj-bin/openproj-bin-1.4.ebuild,v 1.1 2010/12/01 13:37:38 vapier Exp $
 
 
-#CHECK THE HEADER TO SEE WHAT THE DEAL IS!
 
 EAPI="5"
 
@@ -44,14 +43,12 @@ java_prepare() {
 	ls -al
 }
 
-java_compile() {
+java-pkg-2_src_compile() {
 
 	cd openproj_build
 	echo "File list after change directory:"
 	ls -al
 
 }
-
-
 
 
