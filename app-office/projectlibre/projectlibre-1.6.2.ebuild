@@ -7,6 +7,7 @@
 EAPI="5"
 
 JAVA_PKG_IUSE="doc source"
+EANT_BUILD_XML="./openproj_build/build.xml"
 
 inherit eutils java-pkg-2 java-ant-2
 
@@ -43,13 +44,11 @@ java_prepare() {
 	ls -al
 }
 
-java-pkg-2_src_compile() {
-
-	cd openproj_build
-	echo "File list after change directory:"
-	ls -al
-	java-pkg-2_src_compile
-
-}
+#java-pkg-2_src_compile() {
+#	cd openproj_build
+#	echo "File list after change directory:"
+#	ls -al
+#	
+#}
 
 
