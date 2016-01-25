@@ -8,6 +8,7 @@ EAPI="5"
 
 JAVA_PKG_IUSE="doc source"
 EANT_BUILD_XML="./openproj_build/build.xml"
+WANT_ANT_TASKS="ant-contrib"
 
 inherit eutils java-pkg-2 java-ant-2
 
