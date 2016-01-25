@@ -17,9 +17,6 @@ MY_P="${MY_PN}-${PV}-src"
 DESCRIPTION="Free open source desktop alternative to Microsoft Project"
 HOMEPAGE="http://www.projectlibre.org/"
 
-
-#NOT SURE THAT THIS IS GETTING THE CORRECT PACKAGES!!!
-
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="CPAL-1.0"
@@ -36,9 +33,7 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 
 
 java_prepare() {
-	echo "The MY_PN variable is:"
-	echo ${MY_PN}
-	
+
 	echo "File list before clean:"
 	ls -al
 
@@ -49,7 +44,11 @@ java_prepare() {
 	ls -al
 }
 
+java_compile() {
 
+	cd openproj_build
+
+}
 
 
 
