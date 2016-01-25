@@ -47,6 +47,8 @@ java_prepare() {
 java_compile() {
 
 	cd openproj_build
+	echo "File list after change directory:"
+	ls -al
 
 }
 
