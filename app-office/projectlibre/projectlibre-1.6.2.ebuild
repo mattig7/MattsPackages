@@ -33,12 +33,12 @@ S=${WORKDIR}/${MY_P}
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_BUILD_TARGET="dist"
 
-java_prepare() {
+#java_prepare() {
 
 	# Clean up all jar and class files
-	java-pkg_clean
+#	java-pkg_clean
 
-}
+#}
 
 
 
