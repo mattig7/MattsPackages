@@ -9,6 +9,8 @@ EAPI="5"
 JAVA_PKG_IUSE="doc source"
 EANT_BUILD_XML="./openproj_build/build.xml"
 WANT_ANT_TASKS="ant-contrib"
+EANT_BUILD_TARGET="dist"
+
 
 inherit eutils java-pkg-2 java-ant-2
 
@@ -30,13 +32,6 @@ DEPEND=">=virtual/jdk-1.5"
 
 S=${WORKDIR}/${MY_P}
 
-JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_BUILD_TARGET="dist"
-
-src_install() {
-	dobin projectlibre
-
-}
 
 
 
