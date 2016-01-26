@@ -40,11 +40,5 @@ java_prepare() {
 
 }
 
-#java-pkg-2_src_compile() {
-#	cd openproj_build
-#	echo "File list after change directory:"
-#	ls -al
-#	
-#}
 
 
