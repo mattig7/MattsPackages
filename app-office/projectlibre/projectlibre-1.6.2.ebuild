@@ -31,18 +31,13 @@ DEPEND=">=virtual/jdk-1.5"
 S=${WORKDIR}/${MY_P}
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-
+EANT_BUILD_TARGET="dist"
 
 java_prepare() {
-
-	echo "File list before clean:"
-	ls -al
 
 	# Clean up all jar and class files
 	java-pkg_clean
 
-	echo "File list after clean:"
-	ls -al
 }
 
 #java-pkg-2_src_compile() {
